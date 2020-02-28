@@ -16,10 +16,10 @@ namespace Bakery.Models
       BTotal = bTotal;
     }
 
-    public int BreadDiscount()
-    {
+    // public int BreadDiscount()
+    // {
       
-    }
+    // }
 
   }
 
