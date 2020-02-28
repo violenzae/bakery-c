@@ -5,35 +5,33 @@ namespace Bakery.Models
 {
   public class Bread 
   {
-    public double BPrice{ get; set; }
     public int BAmount{ get; set; }
-    public double BTotal{ get; set; }
 
-    public Bread(double bPrice, int bAmount, double bTotal)
+
+    public Bread()
     {
-      BPrice = bPrice;
-      BAmount = bAmount;
-      BTotal = bTotal;
+      BAmount = 0;
     }
 
-    // public int BreadDiscount()
-    // {
-      
-    // }
+    public int BreadDiscounter()
+    {
+     return (BAmount-(BAmount/3))*5;
+    }
 
   }
 
   public class Pastry 
   {
-    public double PPrice{ get; set; }
     public int PAmount{ get; set; }
-    public double PTotal{ get; set; }
 
-    public Pastry(double pPrice, int pAmount, double pTotal)
+    public Pastry()
     {
-      PPrice = pPrice;
-      PAmount = pAmount;
-      PTotal = pTotal;
+      PAmount = 0;
+    }
+
+    public int PastryDiscounter()
+    {
+      return (PAmount/3)*5 + (PAmount%3)*2;
     }
   }
 }
