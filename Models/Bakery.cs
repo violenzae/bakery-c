@@ -5,25 +5,31 @@ namespace Bakery.Models
 {
   public class Bread 
   {
-    public int BPrice{ get; set; }
+    public double BPrice{ get; set; }
     public int BAmount{ get; set; }
-    public int BTotal{ get; set; }
+    public double BTotal{ get; set; }
 
-    public Bread(int bPrice, int bAmount, int bTotal)
+    public Bread(double bPrice, int bAmount, double bTotal)
     {
       BPrice = bPrice;
       BAmount = bAmount;
       BTotal = bTotal;
     }
+
+    public int BreadDiscount()
+    {
+      
+    }
+
   }
 
   public class Pastry 
   {
-    public int PPrice{ get; set; }
+    public double PPrice{ get; set; }
     public int PAmount{ get; set; }
-    public int PTotal{ get; set; }
+    public double PTotal{ get; set; }
 
-    public Pastry(int pPrice, int pAmount, int pTotal)
+    public Pastry(double pPrice, int pAmount, double pTotal)
     {
       PPrice = pPrice;
       PAmount = pAmount;
