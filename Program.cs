@@ -10,10 +10,18 @@ namespace Bakery
   {
     public static void Main()
     {
-      Bread newBread = new Bread();
-      Pastry newPastry = new Pastry();
+      BreadBag newBread = new BreadBag();
+      PastryBag newPastry = new PastryBag();
 
-      Console.WriteLine("Welcome to Pierre's Bakery! Each loaf of bread is $5 and each pastry is $2. We have a 'Buy 2 and get 1 free' sale on bread, and a 3 for $5 sale on pastries.");
+      Console.WriteLine("Welcome to Pierre's Bakery! We have a 'Buy 2 and get 1 free' sale on bread, 'discount on 3' sale on pastries. Press y to see our shelves.");
+
+      if (response1 == "y" || response1 == "Y")
+      {
+      Console.WriteLine("Shelf list here");
+      }
+
+      Console.WriteLine("Which kind of bread would you like? Enter the number next to the name.");
+      breadCart.add()
 
       Console.WriteLine("How many loaves of bread would you like?");
       string stringBread = Console.ReadLine();
