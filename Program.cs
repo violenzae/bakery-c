@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using Bakery.Models;
 
 
-namespace Bakery 
+namespace Bakery
 {
-  public class Program 
+  public class Program
   {
     public static void Main()
     {
@@ -28,13 +28,13 @@ namespace Bakery
       List<Pastry> pastryShelf = new List<Pastry>(4) { cruller, croissant, cinnamon, donut };
 
 
-      Console.WriteLine("Welcome to Pierre's Bakery! We have a 'Buy 2 and get 1 free' sale on bread, 'discount on 3' sale on pastries. Press y to see our shelves.");
+      Console.WriteLine("Welcome to Pierre's Bakery! We have a 'Buy 2 and get 1 free' sale on bread, 'discount on 3' sale on pastries. Press y to see our shelves, any other key to exit.");
 
       string response1 = Console.ReadLine();
 
       if (response1 == "y" || response1 == "Y")
       {
-        foreach(Bread item in breadShelf)
+        foreach (Bread item in breadShelf)
         {
           Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
           Console.WriteLine(item.BNumber + "  " + item.BName + " --- $" + item.BPrice + " per loaf");
@@ -45,55 +45,71 @@ namespace Bakery
         Console.WriteLine("Which kind of bread would you like? Enter the number next to the name.");
 
         string breadPick = Console.ReadLine();
-        
-        foreach(Bread item in breadShelf) 
-          if(breadPick == item.BNumber)
-          {
-            newBread.BName = item.BName;
-            newBread.BNumber = item.BNumber;
-            newBread.BPrice = item.BPrice;
-          }
-
-        Console.WriteLine("How many loaves of bread would you like?");
-        string stringBread = Console.ReadLine();
-        newBread.BAmount = int.Parse(stringBread);
-
-        Console.WriteLine("Total Bread Price: $" + newBread.BreadDiscounter()+". Press y to continue to the pastry shelves.");
-
-        string response2 = Console.ReadLine();
-        if (response2 == "y" || response2 == "Y")
+        if (int.Parse(breadPick) >= 1 && int.Parse(breadPick) <= 4)
         {
-          foreach(Pastry item in pastryShelf)
-          {
-            Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-            Console.WriteLine(item.PNumber + "  " + item.PName + " --- $" + item.PPrice1 + " per pastry, $" + item.PPrice2 + " for three");
-          }
-
-          Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-
-          Console.WriteLine("Which kind of Pastry would you like? Enter the number next to the name.");
-
-          string pastryPick = Console.ReadLine();
-          
-          foreach(Pastry item in pastryShelf) 
-            if(pastryPick == item.PNumber)
+          foreach (Bread item in breadShelf)
+            if (breadPick == item.BNumber)
             {
-              newPastry.PName = item.PName;
-              newPastry.PNumber = item.PNumber;
-              newPastry.PPrice1 = item.PPrice1;
-              newPastry.PPrice2 = item.PPrice2;
+              newBread.BName = item.BName;
+              newBread.BNumber = item.BNumber;
+              newBread.BPrice = item.BPrice;
             }
 
-          Console.WriteLine("How many pastries would you like?");
-          string stringPastry = Console.ReadLine();
-          newPastry.PAmount = int.Parse(stringPastry);
-    
-          Console.WriteLine("Total Pastry Price: $" + newPastry.PastryDiscounter());
+          Console.WriteLine("How many loaves of bread would you like?");
+          string stringBread = Console.ReadLine();
+          newBread.BAmount = int.Parse(stringBread);
 
-      }      
+          Console.WriteLine("Total Bread Price: $" + newBread.BreadDiscounter() + ". Press y to continue to the pastry shelves, or any other key to check out.");
 
-      Console.WriteLine("Your total order price comes to $" + (newBread.BreadDiscounter()+newPastry.PastryDiscounter())+".");
+          string response2 = Console.ReadLine();
+          if (response2 == "y" || response2 == "Y")
+          {
+            foreach (Pastry item in pastryShelf)
+            {
+              Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+              Console.WriteLine(item.PNumber + "  " + item.PName + " --- $" + item.PPrice1 + " per pastry, $" + item.PPrice2 + " for three");
+            }
 
+            Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+
+            Console.WriteLine("Which kind of Pastry would you like? Enter the number next to the name.");
+
+            string pastryPick = Console.ReadLine();
+            if (int.Parse(pastryPick) >= 1 && int.Parse(pastryPick) <= 4)
+            {
+
+            foreach (Pastry item in pastryShelf)
+              if (pastryPick == item.PNumber)
+              {
+                newPastry.PName = item.PName;
+                newPastry.PNumber = item.PNumber;
+                newPastry.PPrice1 = item.PPrice1;
+                newPastry.PPrice2 = item.PPrice2;
+              }
+
+            Console.WriteLine("How many pastries would you like?");
+            string stringPastry = Console.ReadLine();
+            newPastry.PAmount = int.Parse(stringPastry);
+            }
+            else 
+            {
+              Console.WriteLine("no pastry for u /)_o(\\");
+            }
+
+            Console.WriteLine("Total Pastry Price: $" + newPastry.PastryDiscounter());
+
+          }
+          else
+          {
+            Console.WriteLine(":(");
+          }
+
+          Console.WriteLine("Your total order price comes to $" + (newBread.BreadDiscounter() + newPastry.PastryDiscounter()) + ".");
+        }
+        else
+        {
+          Console.WriteLine(">:( lame");
+        }
       }
     }
   }
