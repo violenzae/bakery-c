@@ -10,23 +10,27 @@ namespace Bakery
   {
     public static void Main()
     {
-      Bread newBread = new Bread("", "", 0, 0);
-      Pastry newPastry = new Pastry("", "", 0, 0, 0);
+      Bread newBread = new Bread("", 0, 0, 0);
+      Pastry newPastry = new Pastry("", 0, 0, 0, 0);
 
-      Bread french = new Bread("French Bread", "1", 0, 8);
-      Bread white = new Bread("White Bread", "2", 0, 5);
-      Bread rye = new Bread("Rye Bread", "3", 0, 6);
-      Bread pumpernickel = new Bread("Pumpernickel", "4", 0, 4);
+      Bread french = new Bread("French Bread", 1, 0, 8);
+      Bread white = new Bread("White Bread", 2, 0, 5);
+      Bread rye = new Bread("Rye Bread", 3, 0, 6);
+      Bread pumpernickel = new Bread("Pumpernickel", 4, 0, 4);
 
-      Pastry cruller = new Pastry("Cruller", "1", 0, 3, 7);
-      Pastry croissant = new Pastry("Croissant", "2", 0, 1, 2);
-      Pastry cinnamon = new Pastry("Cinnamon Bun", "3", 0, 5, 11);
-      Pastry donut = new Pastry("Plain Donut", "4", 0, 2, 5);
+      Pastry cruller = new Pastry("Cruller", 1, 0, 3, 7);
+      Pastry croissant = new Pastry("Croissant", 2, 0, 1, 2);
+      Pastry cinnamon = new Pastry("Cinnamon Bun", 3, 0, 5, 11);
+      Pastry donut = new Pastry("Plain Donut", 4, 0, 2, 5);
 
       List<Bread> breadShelf = new List<Bread>(4) { french, white, rye, pumpernickel };
 
       List<Pastry> pastryShelf = new List<Pastry>(4) { cruller, croissant, cinnamon, donut };
 
+      Console.BackgroundColor = ConsoleColor.Red;
+      Console.ForegroundColor = ConsoleColor.Black;
+
+      Console.WriteLine(Figgle.FiggleFonts.Cosmike.Render("CarbQuest"));
 
       Console.WriteLine("Welcome to Pierre's Bakery! We have a 'Buy 2 and get 1 free' sale on bread, 'discount on 3' sale on pastries. Press y to see our shelves, any other key to exit.");
 
@@ -44,8 +48,10 @@ namespace Bakery
 
         Console.WriteLine("Which kind of bread would you like? Enter the number next to the name.");
 
-        string breadPick = Console.ReadLine();
-        if (int.Parse(breadPick) >= 1 && int.Parse(breadPick) <= 4)
+        string stringBreadPick = Console.ReadLine();
+        int breadPick = int.Parse(stringBreadPick);
+
+        if (breadPick >= 1 && breadPick <= 4)
         {
           foreach (Bread item in breadShelf)
             if (breadPick == item.BNumber)
@@ -55,7 +61,7 @@ namespace Bakery
               newBread.BPrice = item.BPrice;
             }
 
-          Console.WriteLine("How many loaves of bread would you like?");
+          Console.WriteLine("How many loaves of " +newBread.BName+ " would you like?");
           string stringBread = Console.ReadLine();
           newBread.BAmount = int.Parse(stringBread);
 
@@ -74,8 +80,10 @@ namespace Bakery
 
             Console.WriteLine("Which kind of Pastry would you like? Enter the number next to the name.");
 
-            string pastryPick = Console.ReadLine();
-            if (int.Parse(pastryPick) >= 1 && int.Parse(pastryPick) <= 4)
+            string stringpastryPick = Console.ReadLine();
+            int pastryPick = int.Parse(stringpastryPick);
+
+            if (pastryPick >= 1 && pastryPick <= 4)
             {
 
             foreach (Pastry item in pastryShelf)
@@ -87,7 +95,7 @@ namespace Bakery
                 newPastry.PPrice2 = item.PPrice2;
               }
 
-            Console.WriteLine("How many pastries would you like?");
+            Console.WriteLine("How many " +newPastry.PName+ "s would you like?");
             string stringPastry = Console.ReadLine();
             newPastry.PAmount = int.Parse(stringPastry);
             }
