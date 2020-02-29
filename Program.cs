@@ -30,7 +30,7 @@ namespace Bakery
       Console.BackgroundColor = ConsoleColor.Red;
       Console.ForegroundColor = ConsoleColor.Black;
 
-      Console.WriteLine(Figgle.FiggleFonts.Cosmike.Render("CarbQuest"));
+      Console.WriteLine(Figgle.FiggleFonts.Crawford.Render("CarbQuest"));
 
       Console.WriteLine("Welcome to Pierre's Bakery! We have a 'Buy 2 and get 1 free' sale on bread, 'discount on 3' sale on pastries. Press y to see our shelves, any other key to exit.");
 
